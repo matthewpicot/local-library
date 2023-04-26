@@ -37,13 +37,18 @@ function getMostCommonGenres(books) {
   return arr;
 }
 
+// Helper funciton here
+function chooseTop (borrows){
+  return borrows.slice(0, 5);
+}
+
 function getMostPopularBooks(books, count=5) {
 // Oganise book data
     const borrows = books.map(book=>({name:book.title, count:book.borrows.length}));
 // Sort by borrow count, descending
     borrows.sort((a,b) => b.count - a.count);
-// Return top number
-    return borrows.slice(0,count);
+// Return invoking helper function
+    return chooseTop(borrows);
 }
 
 function getMostPopularAuthors(books, authors) {
